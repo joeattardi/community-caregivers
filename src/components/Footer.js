@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <>
       <footer className={styles.footer}>
-        <img src="/logo-white.png" />
+        <img alt="Community Caregivers" src="/logo-white.png" />
         <div className={styles.contact}>
           <a
             target="_blank"
