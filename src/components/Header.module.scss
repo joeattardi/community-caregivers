@@ -1,0 +1,17 @@
+@import '../theme';
+
+#header {
+  background: $header-background;
+  border-bottom: 3px solid $header-border;
+  padding: 0.25rem;
+
+  height: 4rem;
+
+  h1 {
+    margin: 0;
+  }
+
+  .logo {
+    height: 4rem;
+  }
+}
