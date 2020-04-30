@@ -1,5 +1,17 @@
 @import '../theme';
 
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero {
   background: url('/hero.jpg');
   background-size: cover;
@@ -29,6 +41,7 @@
       // background: rgba(0, 0, 0, 0.5);
       margin: 0;
       text-shadow: 2px 2px 2px #000000;
+      animation: appear 500ms;
     }
 
     h1 {
