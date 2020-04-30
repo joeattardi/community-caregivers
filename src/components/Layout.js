@@ -1,11 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import Footer from './Footer';
 import Header from './Header';
+
+import styles from './Layout.module.scss';
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className={styles.root}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Community Caregivers</title>
@@ -13,9 +16,11 @@ export default function Layout({ children }) {
 
       <Header />
 
-      <div>
+      <div className={styles.content}>
         {children}
       </div>
+      
+      <Footer />
     </div>
   );
 }

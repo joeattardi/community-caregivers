@@ -1,0 +1,43 @@
+@import '../theme';
+
+.footer {
+  background: $footer-background;
+  border-top: 3px solid $footer-border;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  color: $footer-color;
+
+  a {
+    color: $footer-link;
+    vertical-align: baseline;
+
+    &:hover {
+      color: $footer-link-hover;
+    }
+  }
+
+  img {
+    height: 50px;
+  }
+
+  .contact {
+    flex-grow: 1;
+    text-align: right;
+    font-size: 0.9rem;
+
+    div {
+      margin: 0.25rem;
+    }
+  }
+}
+
+.copyright {
+  background: $footer-background;
+  color: $footer-color;
+  padding: 0.25rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
