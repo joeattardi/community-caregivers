@@ -8,19 +8,18 @@ import styles from './Layout.module.scss';
 
 export default function Layout({ children }) {
   return (
+    <>
+    <Header />
     <div className={styles.root}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Community Caregivers</title>
       </Helmet>
-
-      <Header />
-
       <div className={styles.content}>
         {children}
       </div>
-      
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 }
