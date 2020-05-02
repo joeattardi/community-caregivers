@@ -3,14 +3,28 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 
 import styles from './Footer.module.scss';
 
 export default function Footer() {
+  const data = useStaticQuery(graphql`
+  {
+    file(relativePath: { eq: "logo-only-white.png" }) {
+      childImageSharp {
+        fixed(width: 50) {
+          ...GatsbyImageSharpFixed_noBase64
+        }
+      }
+    }
+  }
+`);
+
   return (
     <>
       <footer className={styles.footer}>
-        <img alt="Community Caregivers" src="/logo-white.png" />
+        <Img alt="Community Caregivers" fixed={data.file.childImageSharp.fixed} />
         <div className={styles.contact}>
           <a
             target="_blank"
