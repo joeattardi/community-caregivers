@@ -12,6 +12,7 @@ module.exports = {
       options: {
         path: `${__dirname}/src/images`
       }
-    }
+    },
+    'gatsby-plugin-netlify-cms'
   ]
 }
