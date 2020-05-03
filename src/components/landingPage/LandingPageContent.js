@@ -5,7 +5,6 @@ import BackgroundImage from 'gatsby-background-image';
 import styles from './LandingPageContent.module.scss';
 
 export default function LandingPageContent({ data }) {
-  console.log(data);
   return (
     <>
       <BackgroundImage
