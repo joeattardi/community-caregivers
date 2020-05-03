@@ -8,22 +8,15 @@ import Layout from '../components/Layout';
 import styles from './index.module.scss';
 
 export default function IndexPage({ data }) {
-  console.log(data);
-
   return (
     <Layout>
-      <BackgroundImage className={styles.hero} fluid={data.hero.childImageSharp.fluid}>
+      <BackgroundImage className={styles.hero} fluid={data.markdownRemark.frontmatter.heroImage.childImageSharp.fluid}>
         <div className={styles.inner}>
           <h1>
-            <span>Make an impact today</span>
+            <span>{data.markdownRemark.frontmatter.headline}</span>
           </h1>
-          <h2>No one should ever be hungry.</h2>
-          <p>
-            We are a group of caring volunteers shopping and delivering
-            groceries to seniors and our disabled neighbors. We also work
-            closely with the Community Pantry to deliver food to anyone who is
-            food insecure.
-          </p>
+          <h2>{data.markdownRemark.frontmatter.subHeadline}</h2>
+          <p>{data.markdownRemark.frontmatter.intro}</p>
         </div>
       </BackgroundImage>
       <main className={styles.main}></main>
@@ -33,10 +26,17 @@ export default function IndexPage({ data }) {
 
 export const query = graphql`
   {
-    hero: file(relativePath: { eq: "hero.jpg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
+    markdownRemark(frontmatter: {templateKey: {eq: "landing-page"}}) {
+      frontmatter {
+        headline
+        subHeadline
+        intro
+        heroImage {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

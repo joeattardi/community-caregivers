@@ -1,4 +1,5 @@
 ---
+templateKey: landing-page
 heroImage: /img/hero.jpg
 headline: Make an impact today
 subHeadline: No one should ever be hungry.
