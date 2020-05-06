@@ -17,4 +17,4 @@ collections:
           - { label: "Hero image", name: "heroImage", widget: "image" }
           - { label: "Headline", name: "headline", widget: "string" }
           - { label: "Sub-headline", name: "subHeadline", widget: "string" }
-          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Intro", name: "intro", widget: "markdown" }
