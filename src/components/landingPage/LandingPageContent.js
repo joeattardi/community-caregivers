@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown';
 import styles from './LandingPageContent.module.scss';
 
 export default function LandingPageContent({ data }) {
-  console.log(data);
   return (
     <>
       <BackgroundImage
@@ -18,7 +17,7 @@ export default function LandingPageContent({ data }) {
             <span>{data.markdownRemark.frontmatter.headline}</span>
           </h1>
           <h2>{data.markdownRemark.frontmatter.subHeadline}</h2>
-          <ReactMarkdown source={data.markdownRemark.frontmatter.intro} />
+          <ReactMarkdown className={styles.intro} source={data.markdownRemark.frontmatter.intro} />
         </div>
       </BackgroundImage>
       <main className={styles.main}></main>

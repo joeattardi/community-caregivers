@@ -57,8 +57,17 @@
       font-size: 2rem;
     }
 
-    p {
+    .intro {
       width: 50%;
+
+      a {
+        color: $color-primary-3;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     img {
