@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 export default function Header() {
   const data = useStaticQuery(graphql`
     {
-      markdownRemark(frontmatter: {templateKey: {eq: "header"}}) {
+      desktopImage: markdownRemark(frontmatter: {templateKey: {eq: "header"}}) {
         frontmatter {
           logoImage {
             childImageSharp {
@@ -19,24 +19,33 @@ export default function Header() {
           }
         }
       }
+
+      mobileImage: markdownRemark(frontmatter: {templateKey: {eq: "header"}}) {
+        frontmatter {
+          logoImage {
+            childImageSharp {
+              fixed(height: 50) {
+                ...GatsbyImageSharpFixed_noBase64
+              }
+            }
+          }
+        }
+      }
     }
   `);
 
+  const sources = [
+    data.desktopImage.frontmatter.logoImage.childImageSharp.fixed,
+    {
+      ...data.mobileImage.frontmatter.logoImage.childImageSharp.fixed,
+      media: '(max-width: 500px)'
+    }
+  ]
+
   return (
     <header id={styles.header}>
-      <Img alt="Community Caregivers" fixed={data.markdownRemark.frontmatter.logoImage.childImageSharp.fixed} />
+      <Img className={styles.logo} alt="Community Caregivers" fixed={sources} />
       <h1>Community Caregivers US</h1>
     </header>
   )
 }
-
-/*
-{
-  logo: file(relativePath: { eq: "heart-logo.jpg" }) {
-    childImageSharp {
-      fixed(width: 100) {
-        ...GatsbyImageSharpFixed_noBase64
-      }
-    }
-  }
-}*/

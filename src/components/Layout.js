@@ -13,7 +13,7 @@ export default function Layout({ children }) {
     <div className={styles.root}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Community Caregivers</title>
+        <title>Community Caregivers US</title>
       </Helmet>
       <div className={styles.content}>
         {children}
