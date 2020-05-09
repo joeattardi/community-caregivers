@@ -8,10 +8,14 @@ import styles from './Header.module.scss';
 export default function Header() {
   const data = useStaticQuery(graphql`
     {
-      file(relativePath: { eq: "header.png" }) {
-        childImageSharp {
-          fixed(width: 190) {
-            ...GatsbyImageSharpFixed_noBase64
+      markdownRemark(frontmatter: {templateKey: {eq: "header"}}) {
+        frontmatter {
+          logoImage {
+            childImageSharp {
+              fixed(height: 100) {
+                ...GatsbyImageSharpFixed_noBase64
+              }
+            }
           }
         }
       }
@@ -20,7 +24,19 @@ export default function Header() {
 
   return (
     <header id={styles.header}>
-      <Img alt="Community Caregivers" fixed={data.file.childImageSharp.fixed} />
+      <Img alt="Community Caregivers" fixed={data.markdownRemark.frontmatter.logoImage.childImageSharp.fixed} />
+      <h1>Community Caregivers US</h1>
     </header>
   )
 }
+
+/*
+{
+  logo: file(relativePath: { eq: "heart-logo.jpg" }) {
+    childImageSharp {
+      fixed(width: 100) {
+        ...GatsbyImageSharpFixed_noBase64
+      }
+    }
+  }
+}*/

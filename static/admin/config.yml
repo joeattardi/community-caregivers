@@ -9,6 +9,12 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
+      - file: "src/pageData/header.md"
+        label: "Header"
+        name: "header"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "header" }
+          - { label: "Logo image", name: "logoImage", widget: "image" }
       - file: "src/pageData/index.md"
         label: "Landing Page"
         name: "landing-page"
