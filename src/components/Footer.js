@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
+import FacebookPageEmbed from './FacebookPageEmbed';
+
 import styles from './Footer.module.scss';
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
+      <FacebookPageEmbed />
       <div className={styles.contact}>
         <a
           target="_blank"

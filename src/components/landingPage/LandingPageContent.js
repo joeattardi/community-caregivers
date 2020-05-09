@@ -17,7 +17,10 @@ export default function LandingPageContent({ data }) {
             <span>{data.markdownRemark.frontmatter.headline}</span>
           </h1>
           <h2>{data.markdownRemark.frontmatter.subHeadline}</h2>
-          <ReactMarkdown className={styles.intro} source={data.markdownRemark.frontmatter.intro} />
+          <ReactMarkdown
+            className={styles.intro}
+            source={data.markdownRemark.frontmatter.intro}
+          />
         </div>
       </BackgroundImage>
       <main className={styles.main}></main>
