@@ -14,6 +14,7 @@
   a {
     color: $footer-link;
     vertical-align: baseline;
+    margin: 0.5rem;
 
     &:hover {
       color: $footer-link-hover;
@@ -29,6 +30,9 @@
     text-align: right;
     font-size: 0.9rem;
 
+    display: flex;
+    flex-direction: column;
+
     div {
       margin: 0.25rem;
     }
@@ -37,8 +41,18 @@
 
 @media screen and (max-width: 500px) {
   .footer {
-    iframe {
-      display: none;
+    flex-direction: column;
+
+    .contact {
+      margin-top: 1rem;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+
+      a {
+        margin: 1rem;
+        font-size: 1.5rem;
+      }
     }
   }
 }

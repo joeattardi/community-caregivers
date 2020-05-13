@@ -20,8 +20,6 @@ export default function Footer() {
         >
           <FontAwesomeIcon icon={faFacebook} size="2x" fixedWidth={true} />
         </a>
-      </div>
-      <div>
         <a href="mailto:communitycaregiversus@gmail.com">
           <FontAwesomeIcon icon={faEnvelope} size="2x" fixedWidth={true} />
         </a>
