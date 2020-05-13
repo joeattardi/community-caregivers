@@ -42,6 +42,10 @@
 @media screen and (max-width: 500px) {
   .footer {
     flex-direction: column;
+    
+    iframe {
+      margin: auto;
+    }
 
     .contact {
       margin-top: 1rem;
