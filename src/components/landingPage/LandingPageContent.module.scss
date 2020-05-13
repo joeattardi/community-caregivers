@@ -60,6 +60,8 @@
     .intro {
       width: 50%;
 
+      font-size: 1.2rem;
+
       a {
         color: $color-primary-3;
         text-decoration: none;
@@ -92,6 +94,10 @@
       
       h2 {
         font-size: 1.3rem;
+      }
+
+      .intro {
+        width: 100%;
       }
 
       p {

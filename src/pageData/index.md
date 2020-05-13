@@ -1,7 +1,7 @@
 ---
 templateKey: landing-page
 heroImage: /img/hero.jpg
-headline: Make an impact today
+headline: Making Community Connections
 subHeadline: No one should ever be hungry.
 intro: >-
   We are a group of caring volunteers shopping and delivering groceries to
