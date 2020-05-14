@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { graphql, useStaticQuery } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
 import styles from './Header.module.scss';
@@ -25,14 +25,18 @@ export default function Header() {
   return (
     <header id={styles.header}>
       <div className={styles.logo}>
-        <Img
-          alt="Community Caregivers"
-          fluid={
-            data.markdownRemark.frontmatter.logoImage.childImageSharp.fluid
-          }
-        />
+        <Link to="/">
+          <Img
+            alt="Community Caregivers"
+            fluid={
+              data.markdownRemark.frontmatter.logoImage.childImageSharp.fluid
+            }
+          />
+        </Link>
       </div>
-      <h1>Community Caregivers US</h1>
+      <h1>
+        <Link to="/">Community Caregivers US</Link>
+      </h1>
     </header>
   );
 }
