@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 export default function Header() {
   const data = useStaticQuery(graphql`
     {
-      markdownRemark(frontmatter: {templateKey: {eq: "header"}}) {
+      markdownRemark(frontmatter: { templateKey: { eq: "header" } }) {
         frontmatter {
           logoImage {
             childImageSharp {
@@ -24,8 +24,15 @@ export default function Header() {
 
   return (
     <header id={styles.header}>
-      <div className={styles.logo}><Img alt="Community Caregivers" fluid={data.markdownRemark.frontmatter.logoImage.childImageSharp.fluid} /></div>
+      <div className={styles.logo}>
+        <Img
+          alt="Community Caregivers"
+          fluid={
+            data.markdownRemark.frontmatter.logoImage.childImageSharp.fluid
+          }
+        />
+      </div>
       <h1>Community Caregivers US</h1>
     </header>
-  )
+  );
 }

@@ -15,7 +15,7 @@ export default function IndexPage({ data }) {
 
 export const query = graphql`
   {
-    markdownRemark(frontmatter: {templateKey: {eq: "landing-page"}}) {
+    markdownRemark(frontmatter: { templateKey: { eq: "landing-page" } }) {
       frontmatter {
         headline
         subHeadline

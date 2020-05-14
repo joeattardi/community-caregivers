@@ -9,17 +9,15 @@ import styles from './Layout.module.scss';
 export default function Layout({ children }) {
   return (
     <>
-    <Header />
-    <div className={styles.root}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Community Caregivers US</title>
-      </Helmet>
-      <div className={styles.content}>
-        {children}
+      <Header />
+      <div className={styles.root}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Community Caregivers US</title>
+        </Helmet>
+        <div className={styles.content}>{children}</div>
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 }
