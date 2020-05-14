@@ -10,9 +10,9 @@ export default function LandingPagePreview({ entry }) {
   const data = {
     markdownRemark: {
       frontmatter: {
-        ...cmsData,
-      },
-    },
+        ...cmsData
+      }
+    }
   };
 
   const heroImage = cmsData.heroImage;
@@ -20,9 +20,9 @@ export default function LandingPagePreview({ entry }) {
   data.markdownRemark.frontmatter.heroImage = {
     childImageSharp: {
       fluid: {
-        src: heroImage,
-      },
-    },
+        src: heroImage
+      }
+    }
   };
 
   return (
