@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Community Caregivers'
+    title: 'Community Caregivers',
   },
   plugins: [
     'gatsby-plugin-sass',
@@ -11,22 +11,22 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/img`,
-        name: 'cmsImages'
-      }
+        name: 'cmsImages',
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/images`,
-        name: 'images'
-      }
+        name: 'images',
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pageData`,
-        name: 'pageData'
-      }
+        name: 'pageData',
+      },
     },
     {
       resolve: 'gatsby-transformer-remark',
@@ -34,16 +34,16 @@ module.exports = {
         plugins: [
           'gatsby-remark-relative-images',
           {
-            resolve: 'gatsby-remark-images'
-          }
-        ]
-      }
+            resolve: 'gatsby-remark-images',
+          },
+        ],
+      },
     },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`
-      }
-    }
-  ]
-}
+        modulePath: `${__dirname}/src/cms/cms.js`,
+      },
+    },
+  ],
+};
