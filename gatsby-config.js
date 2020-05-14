@@ -42,6 +42,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
+        publicPath: 'cms',
+        htmlTitle: 'Community Caregivers CMS',
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
