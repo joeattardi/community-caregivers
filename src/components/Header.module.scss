@@ -26,10 +26,15 @@
     font-size: 2.5rem;
     font-style: italic;
     font-weight: 900;
+    flex-grow: 1;
+  }
 
-    a {
-      color: $header-color;
-    }
+  a {
+    color: $header-color;
+  }
+
+  nav {
+    padding: 0 1rem;
   }
 
 }

@@ -52,6 +52,12 @@ module.exports = {
       options: {
         trackingId: 'UA-80557105-7'
       }
+    },
+    {
+      resolve: 'gatsby-plugin-create-client-paths',
+      options: {
+        prefixes: ['/cc/*']
+      }
     }
   ]
 };
