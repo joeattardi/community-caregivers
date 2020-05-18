@@ -58,6 +58,7 @@ module.exports = {
       options: {
         prefixes: ['/cc/*']
       }
-    }
+    },
+    'gatsby-plugin-netlify'
   ]
 };
