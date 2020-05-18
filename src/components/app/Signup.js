@@ -76,6 +76,16 @@ export default function Signup() {
               </div>
             </div>
             <div className={styles.formRow}>
+              <div className={styles.formField}>
+                <label htmlFor="password">Create a password</label>
+                <input type="password" id="password" />
+              </div>
+              <div className={styles.formField}>
+                <label htmlFor="confirm-password">Confirm password</label>
+                <input type="password" id="confirm-password" />
+              </div>
+            </div>
+            <div className={styles.formRow}>
               <button className={`brand ${styles.submit}`}>Sign up</button>
             </div>
           </form>
