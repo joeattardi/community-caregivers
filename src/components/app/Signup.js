@@ -2,11 +2,15 @@ import React from 'react';
 
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import Select from 'react-select';
 import us from 'us';
 
-import volunteersImage from '../../images/volunteers.jpg';
-
 import styles from './Signup.module.scss';
+
+const stateOptions = us.STATES.map(state => ({
+  value: state.abbr,
+  label: state.name
+}));
 
 export default function Signup() {
   const data = useStaticQuery(graphql`
@@ -29,7 +33,7 @@ export default function Signup() {
           fluid={data.file.childImageSharp.fluid}
         ></BackgroundImage>
         <div className={styles.signupForm}>
-          <h1>Register to be a volunteer</h1>
+          <h1>Sign up to be a volunteer</h1>
           <form>
             <div className={styles.formRow}>
               <div className={styles.formField}>
@@ -52,16 +56,9 @@ export default function Signup() {
                 <label htmlFor="city">City</label>
                 <input type="text" id="city" />
               </div>
-              <div className={styles.formField}>
+              <div className={`${styles.formField} ${styles.state}`}>
                 <label htmlFor="state">State</label>
-                <select>
-                  <option value=""></option>
-                  {us.STATES.map(state => (
-                    <option key={state.abbr} value={state.abbr}>
-                      {state.name}
-                    </option>
-                  ))}
-                </select>
+                <Select options={stateOptions} />
               </div>
               <div className={styles.formField}>
                 <label htmlFor="zip">ZIP code</label>
@@ -79,7 +76,7 @@ export default function Signup() {
               </div>
             </div>
             <div className={styles.formRow}>
-              <button className={`brand ${styles.submit}`}>Register</button>
+              <button className={`brand ${styles.submit}`}>Sign up</button>
             </div>
           </form>
         </div>

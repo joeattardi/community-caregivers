@@ -52,7 +52,16 @@ h1 {
         label {
           margin-bottom: 0.25rem;
         }
+
+        input {
+          justify-self: center;
+        }
+
+        &.state {
+          flex-basis: 10rem;
+        }
       }
+
     }
 
     button.submit {
