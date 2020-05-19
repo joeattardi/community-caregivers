@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
+import * as EmailValidator from 'email-validator';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import { Controller, useForm } from 'react-hook-form';
 import Select from 'react-select';
 import us from 'us';
 
@@ -25,6 +27,18 @@ export default function Signup() {
     }
   `);
 
+  const { control, register, handleSubmit, watch, errors } = useForm();
+
+  function signup(data) {
+    console.log(data);
+  }
+
+  const firstNameElement = useRef();
+
+  useEffect(() => {
+    firstNameElement.current.focus();
+  }, []);
+
   return (
     <div className={styles.main}>
       <div className={styles.container}>
@@ -34,55 +48,114 @@ export default function Signup() {
         ></BackgroundImage>
         <div className={styles.signupForm}>
           <h1>Sign up to be a volunteer</h1>
-          <form>
+          <form onSubmit={handleSubmit(signup)}>
             <div className={styles.formRow}>
               <div className={styles.formField}>
-                <label htmlFor="first-name">First name</label>
-                <input type="text" id="first-name" />
+                <label htmlFor="firstName">First name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  ref={e => {
+                    firstNameElement.current = e;
+                    register({ e, required: true });
+                  }}
+                />
               </div>
               <div className={styles.formField}>
-                <label htmlFor="last-name">Last name</label>
-                <input type="text" id="last-name" />
+                <label htmlFor="lastName">Last name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  ref={register({ required: true })}
+                />
               </div>
             </div>
             <div className={styles.formRow}>
               <div className={styles.formField}>
                 <label htmlFor="address">Address</label>
-                <input type="text" id="address" />
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  ref={register({ required: true })}
+                />
               </div>
             </div>
             <div className={styles.formRow}>
               <div className={styles.formField}>
                 <label htmlFor="city">City</label>
-                <input type="text" id="city" />
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  ref={register({ required: true })}
+                />
               </div>
               <div className={`${styles.formField} ${styles.state}`}>
                 <label htmlFor="state">State</label>
-                <Select options={stateOptions} />
+                <Controller
+                  as={Select}
+                  name="state"
+                  control={control}
+                  options={stateOptions}
+                />
               </div>
               <div className={styles.formField}>
                 <label htmlFor="zip">ZIP code</label>
-                <input type="text" id="zip" />
+                <input
+                  type="text"
+                  id="zip"
+                  name="zip"
+                  ref={register({ required: true })}
+                />
               </div>
             </div>
             <div className={styles.formRow}>
               <div className={styles.formField}>
                 <label htmlFor="phone">Phone number</label>
-                <input type="tel" id="phone" />
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  ref={register({ required: true })}
+                />
               </div>
               <div className={styles.formField}>
                 <label htmlFor="email">Email address</label>
-                <input type="email" id="email" />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  ref={register({
+                    required: true,
+                    validate: value => EmailValidator.validate(value)
+                  })}
+                />
               </div>
             </div>
             <div className={styles.formRow}>
               <div className={styles.formField}>
                 <label htmlFor="password">Create a password</label>
-                <input type="password" id="password" />
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  ref={register({ required: true, minLength: 6 })}
+                />
               </div>
               <div className={styles.formField}>
-                <label htmlFor="confirm-password">Confirm password</label>
-                <input type="password" id="confirm-password" />
+                <label htmlFor="confirmPassword">Confirm password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  ref={register({
+                    required: true,
+                    validate: value => value === watch('password')
+                  })}
+                />
               </div>
             </div>
             <div className={styles.formRow}>
