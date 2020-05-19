@@ -73,13 +73,9 @@ export default function Signup() {
                   aria-invalid={!!errors.firstName}
                   aria-describedby="firstName-error"
                 />
-                {errors.firstName ? (
-                  <div id="firstName-error" className="form-error">
-                    {errors.firstName.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="firstName-error" className="form-error">
+                  {errors.firstName && errors.firstName.message}
+                </div>
               </div>
               <div className={styles.formField}>
                 <label htmlFor="lastName">Last name</label>
@@ -92,13 +88,9 @@ export default function Signup() {
                   aria-invalid={!!errors.lastName}
                   aria-describedby="lastName-error"
                 />
-                {errors.lastName ? (
-                  <div id="lastName-error" className="form-error">
-                    {errors.lastName.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="lastName-error" className="form-error">
+                  {errors.lastName && errors.lastName.message}
+                </div>
               </div>
             </div>
             <div className={styles.formRow}>
@@ -113,13 +105,9 @@ export default function Signup() {
                   aria-invalid={!!errors.address}
                   aria-describedby="address-error"
                 />
-                {errors.address ? (
-                  <div id="address-error" className="form-error">
-                    {errors.address.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="address-error" className="form-error">
+                  {errors.address && errors.address.message}
+                </div>
               </div>
             </div>
             <div className={styles.formRow}>
@@ -134,13 +122,9 @@ export default function Signup() {
                   aria-invalid={!!errors.city}
                   aria-describedby="city-error"
                 />
-                {errors.city ? (
-                  <div id="city-error" className="form-error">
-                    {errors.city.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="city-error" className="form-error">
+                  {errors.city && errors.city.message}
+                </div>
               </div>
               <div className={`${styles.formField} ${styles.state}`}>
                 <label htmlFor="state">State</label>
@@ -159,11 +143,9 @@ export default function Signup() {
                     })
                   }}
                 />
-                {errors.state ? (
-                  <div className="form-error">{errors.state.message}</div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div className="form-error">
+                  {errors.state && errors.state.message}
+                </div>
               </div>
               <div className={styles.formField}>
                 <label htmlFor="zip">ZIP code</label>
@@ -176,13 +158,9 @@ export default function Signup() {
                   aria-invalid={!!errors.zip}
                   aria-describedby="zip-error"
                 />
-                {errors.zip ? (
-                  <div id="zip-error" className="form-error">
-                    {errors.zip.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="zip-error" className="form-error">
+                  {errors.zip && errors.zip.message}
+                </div>
               </div>
             </div>
             <div className={styles.formRow}>
@@ -197,13 +175,9 @@ export default function Signup() {
                   aria-invalid={!!errors.phone}
                   aria-describedby="phone-error"
                 />
-                {errors.phone ? (
-                  <div id="phone-error" className="form-error">
-                    {errors.phone.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="phone-error" className="form-error">
+                  {errors.phone && errors.phone.message}
+                </div>
               </div>
               <div className={styles.formField}>
                 <label htmlFor="email">Email address</label>
@@ -220,13 +194,9 @@ export default function Signup() {
                   aria-invalid={!!errors.email}
                   aria-describedby="email-error"
                 />
-                {errors.email ? (
-                  <div id="email-error" className="form-error">
-                    {errors.email.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="email-error" className="form-error">
+                  {errors.email && errors.email.message}
+                </div>
               </div>
             </div>
             <div className={styles.formRow}>
@@ -251,13 +221,9 @@ export default function Signup() {
                   aria-invalid={!!errors.password}
                   aria-describedby="password-error"
                 />
-                {errors.password ? (
-                  <div id="password-error" className="form-error">
-                    {errors.password.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="password-error" className="form-error">
+                  {errors.password && errors.password.message}
+                </div>
               </div>
               <div className={styles.formField}>
                 <label htmlFor="confirmPassword">Confirm password</label>
@@ -274,13 +240,9 @@ export default function Signup() {
                   aria-invalid={!!errors.confirmPassword}
                   aria-describedby="confirmPassword-error"
                 />
-                {errors.confirmPassword ? (
-                  <div id="confirmPassword-error" className="form-error">
-                    {errors.confirmPassword.message}
-                  </div>
-                ) : (
-                  <div className="form-error-placeholder">&nbsp;</div>
-                )}
+                <div id="confirmPassword-error" className="form-error">
+                  {errors.confirmPassword && errors.confirmPassword.message}
+                </div>
               </div>
             </div>
             <div className={styles.formRow}>
