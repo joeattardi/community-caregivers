@@ -27,7 +27,16 @@ export default function Signup() {
     }
   `);
 
-  const { control, register, handleSubmit, watch, errors } = useForm();
+  const {
+    control,
+    register,
+    handleSubmit,
+    watch,
+    errors,
+    clearError
+  } = useForm({
+    mode: 'onBlur'
+  });
 
   function signup(data) {
     console.log(data);
@@ -56,11 +65,17 @@ export default function Signup() {
                   type="text"
                   id="firstName"
                   name="firstName"
+                  className={errors.firstName ? styles.error : ''}
                   ref={e => {
                     firstNameElement.current = e;
-                    register({ e, required: true });
+                    register(e, { required: 'First name is required' });
                   }}
                 />
+                {errors.firstName ? (
+                  <div className="form-error">{errors.firstName.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
               <div className={styles.formField}>
                 <label htmlFor="lastName">Last name</label>
@@ -68,8 +83,14 @@ export default function Signup() {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  ref={register({ required: true })}
+                  className={errors.lastName ? styles.error : ''}
+                  ref={register({ required: 'Last name is required' })}
                 />
+                {errors.lastName ? (
+                  <div className="form-error">{errors.lastName.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
             </div>
             <div className={styles.formRow}>
@@ -79,8 +100,14 @@ export default function Signup() {
                   type="text"
                   id="address"
                   name="address"
-                  ref={register({ required: true })}
+                  className={errors.address ? styles.error : ''}
+                  ref={register({ required: 'Address is required' })}
                 />
+                {errors.address ? (
+                  <div className="form-error">{errors.address.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
             </div>
             <div className={styles.formRow}>
@@ -90,8 +117,14 @@ export default function Signup() {
                   type="text"
                   id="city"
                   name="city"
-                  ref={register({ required: true })}
+                  className={errors.city ? styles.error : ''}
+                  ref={register({ required: 'City is required' })}
                 />
+                {errors.city ? (
+                  <div className="form-error">{errors.city.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
               <div className={`${styles.formField} ${styles.state}`}>
                 <label htmlFor="state">State</label>
@@ -100,7 +133,21 @@ export default function Signup() {
                   name="state"
                   control={control}
                   options={stateOptions}
+                  rules={{ required: 'State is required' }}
+                  styles={{
+                    control: provided => ({
+                      ...provided,
+                      borderColor: errors.state
+                        ? '#a80000'
+                        : provided.borderColor
+                    })
+                  }}
                 />
+                {errors.state ? (
+                  <div className="form-error">{errors.state.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
               <div className={styles.formField}>
                 <label htmlFor="zip">ZIP code</label>
@@ -108,8 +155,14 @@ export default function Signup() {
                   type="text"
                   id="zip"
                   name="zip"
-                  ref={register({ required: true })}
+                  className={errors.zip ? styles.error : ''}
+                  ref={register({ required: 'ZIP code is required' })}
                 />
+                {errors.zip ? (
+                  <div className="form-error">{errors.zip.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
             </div>
             <div className={styles.formRow}>
@@ -119,8 +172,14 @@ export default function Signup() {
                   type="tel"
                   id="phone"
                   name="phone"
-                  ref={register({ required: true })}
+                  className={errors.phone ? styles.error : ''}
+                  ref={register({ required: 'Phone number is required' })}
                 />
+                {errors.phone ? (
+                  <div className="form-error">{errors.phone.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
               <div className={styles.formField}>
                 <label htmlFor="email">Email address</label>
@@ -128,11 +187,18 @@ export default function Signup() {
                   type="email"
                   id="email"
                   name="email"
+                  className={errors.email ? styles.error : ''}
                   ref={register({
-                    required: true,
-                    validate: value => EmailValidator.validate(value)
+                    required: 'Email address is required',
+                    validate: value =>
+                      EmailValidator.validate(value) || 'Invalid email address'
                   })}
                 />
+                {errors.email ? (
+                  <div className="form-error">{errors.email.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
             </div>
             <div className={styles.formRow}>
@@ -142,8 +208,24 @@ export default function Signup() {
                   type="password"
                   id="password"
                   name="password"
-                  ref={register({ required: true, minLength: 6 })}
+                  className={errors.password ? styles.error : ''}
+                  onBlur={() =>
+                    watch('password') === watch('confirmPassword') &&
+                    clearError('confirmPassword')
+                  }
+                  ref={register({
+                    required: 'Password is required',
+                    minLength: {
+                      value: 6,
+                      message: 'Password must be at least 6 characters'
+                    }
+                  })}
                 />
+                {errors.password ? (
+                  <div className="form-error">{errors.password.message}</div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
               <div className={styles.formField}>
                 <label htmlFor="confirmPassword">Confirm password</label>
@@ -151,11 +233,20 @@ export default function Signup() {
                   type="password"
                   id="confirmPassword"
                   name="confirmPassword"
+                  className={errors.confirmPassword ? styles.error : ''}
                   ref={register({
-                    required: true,
-                    validate: value => value === watch('password')
+                    required: 'Password confirmation is required',
+                    validate: value =>
+                      value === watch('password') || 'Passwords do not match'
                   })}
                 />
+                {errors.confirmPassword ? (
+                  <div className="form-error">
+                    {errors.confirmPassword.message}
+                  </div>
+                ) : (
+                  <div className="form-error-placeholder">&nbsp;</div>
+                )}
               </div>
             </div>
             <div className={styles.formRow}>
