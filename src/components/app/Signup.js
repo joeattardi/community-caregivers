@@ -70,9 +70,13 @@ export default function Signup() {
                     firstNameElement.current = e;
                     register(e, { required: 'First name is required' });
                   }}
+                  aria-invalid={!!errors.firstName}
+                  aria-describedby="firstName-error"
                 />
                 {errors.firstName ? (
-                  <div className="form-error">{errors.firstName.message}</div>
+                  <div id="firstName-error" className="form-error">
+                    {errors.firstName.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -85,9 +89,13 @@ export default function Signup() {
                   name="lastName"
                   className={errors.lastName ? styles.error : ''}
                   ref={register({ required: 'Last name is required' })}
+                  aria-invalid={!!errors.lastName}
+                  aria-describedby="lastName-error"
                 />
                 {errors.lastName ? (
-                  <div className="form-error">{errors.lastName.message}</div>
+                  <div id="lastName-error" className="form-error">
+                    {errors.lastName.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -102,9 +110,13 @@ export default function Signup() {
                   name="address"
                   className={errors.address ? styles.error : ''}
                   ref={register({ required: 'Address is required' })}
+                  aria-invalid={!!errors.address}
+                  aria-describedby="address-error"
                 />
                 {errors.address ? (
-                  <div className="form-error">{errors.address.message}</div>
+                  <div id="address-error" className="form-error">
+                    {errors.address.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -119,9 +131,13 @@ export default function Signup() {
                   name="city"
                   className={errors.city ? styles.error : ''}
                   ref={register({ required: 'City is required' })}
+                  aria-invalid={!!errors.city}
+                  aria-describedby="city-error"
                 />
                 {errors.city ? (
-                  <div className="form-error">{errors.city.message}</div>
+                  <div id="city-error" className="form-error">
+                    {errors.city.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -157,9 +173,13 @@ export default function Signup() {
                   name="zip"
                   className={errors.zip ? styles.error : ''}
                   ref={register({ required: 'ZIP code is required' })}
+                  aria-invalid={!!errors.zip}
+                  aria-describedby="zip-error"
                 />
                 {errors.zip ? (
-                  <div className="form-error">{errors.zip.message}</div>
+                  <div id="zip-error" className="form-error">
+                    {errors.zip.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -174,9 +194,13 @@ export default function Signup() {
                   name="phone"
                   className={errors.phone ? styles.error : ''}
                   ref={register({ required: 'Phone number is required' })}
+                  aria-invalid={!!errors.phone}
+                  aria-describedby="phone-error"
                 />
                 {errors.phone ? (
-                  <div className="form-error">{errors.phone.message}</div>
+                  <div id="phone-error" className="form-error">
+                    {errors.phone.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -193,9 +217,13 @@ export default function Signup() {
                     validate: value =>
                       EmailValidator.validate(value) || 'Invalid email address'
                   })}
+                  aria-invalid={!!errors.email}
+                  aria-describedby="email-error"
                 />
                 {errors.email ? (
-                  <div className="form-error">{errors.email.message}</div>
+                  <div id="email-error" className="form-error">
+                    {errors.email.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -220,9 +248,13 @@ export default function Signup() {
                       message: 'Password must be at least 6 characters'
                     }
                   })}
+                  aria-invalid={!!errors.password}
+                  aria-describedby="password-error"
                 />
                 {errors.password ? (
-                  <div className="form-error">{errors.password.message}</div>
+                  <div id="password-error" className="form-error">
+                    {errors.password.message}
+                  </div>
                 ) : (
                   <div className="form-error-placeholder">&nbsp;</div>
                 )}
@@ -239,9 +271,11 @@ export default function Signup() {
                     validate: value =>
                       value === watch('password') || 'Passwords do not match'
                   })}
+                  aria-invalid={!!errors.confirmPassword}
+                  aria-describedby="confirmPassword-error"
                 />
                 {errors.confirmPassword ? (
-                  <div className="form-error">
+                  <div id="confirmPassword-error" className="form-error">
                     {errors.confirmPassword.message}
                   </div>
                 ) : (
