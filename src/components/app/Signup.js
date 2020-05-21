@@ -1,11 +1,16 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useContext, useEffect, useState } from 'react';
 
 import * as EmailValidator from 'email-validator';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { Controller, useForm } from 'react-hook-form';
+import Loader from 'react-loader-spinner';
 import Select from 'react-select';
 import us from 'us';
+
+import FirebaseContext from '../../firebase/FirebaseContext';
+
+import Banner from './Banner';
 
 import styles from './Signup.module.scss';
 
@@ -27,6 +32,11 @@ export default function Signup() {
     }
   `);
 
+  const firebase = useContext(FirebaseContext);
+
+  const [error, setError] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+
   const {
     control,
     register,
@@ -38,11 +48,43 @@ export default function Signup() {
     mode: 'onBlur'
   });
 
-  function signup(data) {
-    console.log(data);
+  async function signup(data) {
+    setLoading(true);
+
+    const auth = firebase.auth();
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        data.email,
+        data.password
+      );
+
+      const db = firebase.firestore();
+      await db.collection('volunteers').doc(user.uid).set({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        address: data.address,
+        city: data.city,
+        state: data.state,
+        zip: data.zip,
+        email: data.email
+      });
+    } catch (err) {
+      if (err.code === 'auth/email-already-in-use') {
+        setError(
+          'The email address you specified is already in use by another volunteer.'
+        );
+        emailElement.current.focus();
+      } else {
+        setError('An unexpected error has occurred.');
+      }
+
+      setLoading(false);
+    }
   }
 
   const firstNameElement = useRef();
+  const emailElement = useRef();
 
   useEffect(() => {
     firstNameElement.current.focus();
@@ -50,6 +92,7 @@ export default function Signup() {
 
   return (
     <div className={styles.main}>
+      {error && <Banner type="error">{error}</Banner>}
       <div className={styles.container}>
         <BackgroundImage
           className={styles.image}
@@ -186,11 +229,15 @@ export default function Signup() {
                   id="email"
                   name="email"
                   className={errors.email ? styles.error : ''}
-                  ref={register({
-                    required: 'Email address is required',
-                    validate: value =>
-                      EmailValidator.validate(value) || 'Invalid email address'
-                  })}
+                  ref={e => {
+                    emailElement.current = e;
+                    register(e, {
+                      required: 'Email address is required',
+                      validate: value =>
+                        EmailValidator.validate(value) ||
+                        'Invalid email address'
+                    });
+                  }}
                   aria-invalid={!!errors.email}
                   aria-describedby="email-error"
                 />
@@ -246,7 +293,13 @@ export default function Signup() {
               </div>
             </div>
             <div className={styles.formRow}>
-              <button className={`brand ${styles.submit}`}>Sign up</button>
+              <button className={`brand ${styles.submit}`} disabled={isLoading}>
+                {isLoading ? (
+                  <Loader type="Oval" color="#FFFFFF" width={16} height={16} />
+                ) : (
+                  <span>Sign up</span>
+                )}
+              </button>
             </div>
           </form>
         </div>

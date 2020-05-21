@@ -1,0 +1,15 @@
+@import '../../theme';
+
+.banner {
+  padding: 0.5rem;
+  border-radius: 5px;
+
+  svg {
+    margin-right: 0.5rem;
+  }
+
+  &.error {
+    background: $error-color;
+    color: #ffffff;
+  }
+}

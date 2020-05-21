@@ -24,6 +24,11 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background 250ms;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 button.brand {
@@ -33,6 +38,10 @@ button.brand {
 
   &:hover {
     background: $brand-button-hover-background;
+
+    &:disabled {
+      background: $brand-button-background;
+    }
   }
 }
 
