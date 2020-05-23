@@ -8,6 +8,7 @@ import BackgroundImage from 'gatsby-background-image';
 import { GeoFirestore } from 'geofirestore';
 import { Controller, useForm } from 'react-hook-form';
 import Loader from 'react-loader-spinner';
+import ReactMarkdown from 'react-markdown';
 import Select from 'react-select';
 import us from 'us';
 
@@ -31,6 +32,12 @@ export default function Signup() {
           fluid(maxWidth: 700) {
             ...GatsbyImageSharpFluid
           }
+        }
+      }
+
+      markdownRemark(frontmatter: { templateKey: { eq: "registration" } }) {
+        frontmatter {
+          preRegistrationMessage
         }
       }
     }
@@ -123,6 +130,11 @@ export default function Signup() {
         ></BackgroundImage>
         <div className={styles.signupForm}>
           <h1>Sign up to be a volunteer</h1>
+
+          <ReactMarkdown
+            source={data.markdownRemark.frontmatter.preRegistrationMessage}
+          />
+
           <form onSubmit={handleSubmit(signup)}>
             <div className={styles.formRow}>
               <div className={styles.formField}>
