@@ -3,8 +3,6 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-console.log(process.env.FIREBASE_API_KEY);
-
 export default function init() {
   if (typeof window !== 'undefined') {
     if (!firebase.apps.length) {

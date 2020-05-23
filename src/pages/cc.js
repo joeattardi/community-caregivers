@@ -7,6 +7,7 @@ import firebaseInit from '../firebase/init';
 
 import AppLayout from '../components/app/AppLayout';
 import Signup from '../components/app/Signup';
+import SignupConfirm from '../components/app/SignupConfirm';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <AppLayout>
         <Router basepath="/cc">
           <Signup path="/signup" />
+          <SignupConfirm path="/thankyou" />
         </Router>
       </AppLayout>
     </FirebaseContext.Provider>

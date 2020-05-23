@@ -1,14 +1,18 @@
 import React, { useRef, useContext, useEffect, useState } from 'react';
 
+import { useNavigate } from '@reach/router';
 import * as EmailValidator from 'email-validator';
+import * as firebase from 'firebase/app';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import { GeoFirestore } from 'geofirestore';
 import { Controller, useForm } from 'react-hook-form';
 import Loader from 'react-loader-spinner';
 import Select from 'react-select';
 import us from 'us';
 
 import FirebaseContext from '../../firebase/FirebaseContext';
+import { geocode } from '../../services/geocoder';
 
 import Banner from './Banner';
 
@@ -32,7 +36,7 @@ export default function Signup() {
     }
   `);
 
-  const firebase = useContext(FirebaseContext);
+  const firebaseRef = useContext(FirebaseContext);
 
   const [error, setError] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -48,10 +52,19 @@ export default function Signup() {
     mode: 'onBlur'
   });
 
+  const navigate = useNavigate();
+
   async function signup(data) {
     setLoading(true);
 
-    const auth = firebase.auth();
+    const auth = firebaseRef.auth();
+
+    const coordinates = await geocode(
+      data.address,
+      data.city,
+      data.state.value,
+      data.zip
+    );
 
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -59,16 +72,26 @@ export default function Signup() {
         data.password
       );
 
-      const db = firebase.firestore();
-      await db.collection('volunteers').doc(user.uid).set({
+      const firestore = firebaseRef.firestore();
+      const geofirestore = new GeoFirestore(firestore);
+      const geoCollection = geofirestore.collection('volunteers');
+      await geoCollection.doc(user.uid).set({
         firstName: data.firstName,
         lastName: data.lastName,
         address: data.address,
         city: data.city,
-        state: data.state,
+        state: data.state.value,
         zip: data.zip,
-        email: data.email
+        phone: data.phone,
+        email: data.email,
+        active: false,
+        coordinates: new firebase.firestore.GeoPoint(
+          coordinates.lat,
+          coordinates.lng
+        )
       });
+
+      navigate('/cc/thankyou', { state: { name: data.firstName } });
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
         setError(
