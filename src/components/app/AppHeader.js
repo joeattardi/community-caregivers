@@ -7,6 +7,8 @@ import { navigate, Link } from 'gatsby';
 import FirebaseContext from '../../firebase/FirebaseContext';
 import UserContext from './UserContext';
 
+import NavigationMenu from './NavigationMenu';
+
 import styles from './AppHeader.module.scss';
 
 export default function AppHeader() {
@@ -29,14 +31,17 @@ export default function AppHeader() {
         <h2>Volunteer Management System</h2>
       </div>
       {user ? (
-        <nav className={styles.nav}>
-          <div className={styles.username}>
-            <FontAwesomeIcon icon={faUser} /> {user.firstName} {user.lastName}
-          </div>
-          <a href="#" onClick={logout}>
-            Log out
-          </a>
-        </nav>
+        <>
+          <nav className={styles.nav}>
+            <a href="#" onClick={logout}>
+              Log out
+            </a>
+            <div className={styles.username}>
+              <FontAwesomeIcon icon={faUser} /> {user.firstName} {user.lastName}
+            </div>
+          </nav>
+          <NavigationMenu />
+        </>
       ) : null}
     </header>
   );

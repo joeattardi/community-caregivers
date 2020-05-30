@@ -40,7 +40,6 @@
 
   .username {
     font-weight: bold;
-    margin: 0 1rem;
   }
 }
 
@@ -50,12 +49,16 @@
       font-size: 2rem;
     }
 
-    h1 {
-      font-size: 1.5rem;
-    }
+    .title {
+      flex-grow: 1;
 
-    h2 {
-      display: none;
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        display: none;
+      }
     }
   }
 
