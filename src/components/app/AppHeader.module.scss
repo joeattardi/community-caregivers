@@ -38,3 +38,23 @@
   display: flex;
   justify-content: flex-end;
 }
+
+@media screen and (max-width: 450px) {
+  .header {
+    .icon {
+      font-size: 2rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      display: none;
+    }
+  }
+
+  .nav {
+    display: none;
+  }
+}
