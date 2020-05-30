@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHandHoldingHeart, faUser } from '@fortawesome/free-solid-svg-icons';
 import { navigate, Link } from 'gatsby';
 
 import FirebaseContext from '../../firebase/FirebaseContext';
@@ -30,6 +30,9 @@ export default function AppHeader() {
       </div>
       {user ? (
         <nav className={styles.nav}>
+          <div className={styles.username}>
+            <FontAwesomeIcon icon={faUser} /> {user.firstName} {user.lastName}
+          </div>
           <a href="#" onClick={logout}>
             Log out
           </a>

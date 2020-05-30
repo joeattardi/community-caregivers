@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
+import { GeoFirestore } from 'geofirestore';
 import { Router } from '@reach/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loader from 'react-loader-spinner';
@@ -18,8 +19,32 @@ import styles from './App.module.scss';
 export default function App() {
   const firebaseRef = useContext(FirebaseContext);
   const [user, isLoadingUser] = useAuthState(firebaseRef.auth());
+  const [userProfile, setUserProfile] = useState(null);
+  const [isLoadingUserProfile, setLoadingUserProfile] = useState(true);
 
-  if (isLoadingUser) {
+  useEffect(() => {
+    if (!isLoadingUser) {
+      if (user) {
+        setLoadingUserProfile(true);
+        const userDocument = new GeoFirestore(firebaseRef.firestore())
+          .collection('volunteers')
+          .doc(user.uid);
+        userDocument
+          .get()
+          .then(data => {
+            setUserProfile(data);
+            setLoadingUserProfile(false);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        setLoadingUserProfile(false);
+      }
+    }
+  }, [isLoadingUser, user, firebaseRef]);
+
+  if (isLoadingUser || isLoadingUserProfile) {
     return (
       <AppLayout>
         <div className={styles.loading}>
@@ -30,7 +55,16 @@ export default function App() {
   }
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider
+      value={
+        user &&
+        userProfile && {
+          email: user.email,
+          uid: user.uid,
+          ...userProfile.data()
+        }
+      }
+    >
       <AppLayout>
         <Router basepath="/cc">
           <Login path="/login" />

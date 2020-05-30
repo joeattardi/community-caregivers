@@ -11,6 +11,7 @@ export default function withAuth(Component) {
 
     if (!user) {
       navigate('/cc/login');
+      return null;
     }
 
     return <Component {...props} />;

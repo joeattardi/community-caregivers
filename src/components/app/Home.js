@@ -7,7 +7,7 @@ import UserContext from './UserContext';
 function Home() {
   const user = useContext(UserContext);
 
-  return <h1>Home</h1>;
+  return <h1>Hello {user.firstName}</h1>;
 }
 
 export default withAuth(Home);
