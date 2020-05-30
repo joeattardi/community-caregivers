@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
+import { navigate } from 'gatsby';
 import { useForm } from 'react-hook-form';
 import Loader from 'react-loader-spinner';
 
@@ -29,9 +30,10 @@ export default function Login() {
   async function login(data) {
     setLoading(true);
     try {
-      const result = await firebaseRef
+      await firebaseRef
         .auth()
         .signInWithEmailAndPassword(data.email, data.password);
+      navigate('/cc');
     } catch (err) {
       if (
         err.code === 'auth/user-not-found' ||
