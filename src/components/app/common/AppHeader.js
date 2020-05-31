@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
 
-import UserContext from './UserContext';
+import UserContext from '../UserContext';
 
 import NavigationMenu from './NavigationMenu';
 

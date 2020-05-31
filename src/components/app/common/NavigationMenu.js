@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 
 import { Link, navigate } from 'gatsby';
 
-import FirebaseContext from '../../firebase/FirebaseContext';
+import FirebaseContext from '../../../firebase/FirebaseContext';
 
 import styles from './NavigationMenu.module.scss';
 

@@ -1,5 +1,9 @@
 @import './theme';
 
+body {
+  background: $app-background;
+}
+
 a {
   color: $app-link-color;
   transition: all 250ms ease-in-out;

@@ -8,7 +8,7 @@ import Loader from 'react-loader-spinner';
 import FirebaseContext from '../../firebase/FirebaseContext';
 import UserContext from './UserContext';
 
-import AppLayout from './AppLayout';
+import AppLayout from './common/AppLayout';
 import Home from './Home';
 import Login from './Login';
 import Profile from './Profile';
@@ -66,15 +66,13 @@ export default function App() {
         }
       }
     >
-      <AppLayout>
-        <Router basepath="/cc">
-          <Login path="/login" />
-          <Signup path="/signup" />
-          <SignupConfirm path="/thankyou" />
-          <Profile path="/profile" />
-          <Home path="/" />
-        </Router>
-      </AppLayout>
+      <Router basepath="/cc">
+        <Login path="/login" />
+        <Signup path="/signup" />
+        <SignupConfirm path="/thankyou" />
+        <Profile path="/profile" />
+        <Home path="/" />
+      </Router>
     </UserContext.Provider>
   );
 }

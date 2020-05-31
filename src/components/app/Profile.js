@@ -2,9 +2,12 @@ import React from 'react';
 
 import withAuth from './auth/withAuth';
 
+import AppLayout from './common/AppLayout';
+
 function Profile() {
   return (
-    <h1>Profile</h1>
+    <AppLayout title="My Profile">
+    </AppLayout>
   );
 }
 
