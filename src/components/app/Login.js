@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import Loader from 'react-loader-spinner';
 
 import FirebaseContext from '../../firebase/FirebaseContext';
+import UserContext from './UserContext';
 
 import Banner from './Banner';
 
@@ -22,6 +23,11 @@ export default function Login() {
   const passwordElement = useRef();
 
   const firebaseRef = useContext(FirebaseContext);
+
+  const user = useContext(UserContext);
+  if (user) {
+    navigate('/cc');
+  }
 
   useEffect(() => {
     emailElement.current.focus();

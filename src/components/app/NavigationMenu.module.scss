@@ -1,5 +1,9 @@
 @import '../../theme';
 
+.menuContainer {
+  position: relative;
+}
+
 .hamburger {
   height: 24px;
   width: 24px;
@@ -9,7 +13,7 @@
   cursor: pointer;
   padding: 1rem;
   transition: background 250ms ease-in-out;
-  border-radius: 5px;
+  // border-radius: 5px 5px 0 0;
 
   & > div {
     background: $app-menu-active-background;
@@ -38,5 +42,40 @@
 
   &.open > div:last-child {
     transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+.menu {
+  background: $app-menu-active-background;
+  color: #ffffff;
+
+  width: 10rem;
+  padding: 0.25rem;
+
+  transform: translateX(12rem);
+  opacity: 0;
+
+  position: absolute;
+  right: -1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: all 250ms ease-in-out;
+
+  a {
+    padding: 1rem;
+    color: #ffffff;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      background: #ffffff;
+      color: $app-menu-active-background;
+    }
+  }
+
+  &.open {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
