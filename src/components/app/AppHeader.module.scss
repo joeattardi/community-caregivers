@@ -20,6 +20,14 @@
   .title {
     h1 {
       margin: 0;
+
+      a {
+        color: $app-header-color;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     h2 {

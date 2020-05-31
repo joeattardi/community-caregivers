@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
-import { navigate, Link } from 'gatsby';
+import { Link } from 'gatsby';
 
-import FirebaseContext from '../../firebase/FirebaseContext';
 import UserContext from './UserContext';
 
 import NavigationMenu from './NavigationMenu';
@@ -13,13 +12,6 @@ import styles from './AppHeader.module.scss';
 
 export default function AppHeader() {
   const user = useContext(UserContext);
-  const firebaseRef = useContext(FirebaseContext);
-
-  async function logout(event) {
-    event.preventDefault();
-    await firebaseRef.auth().signOut();
-    navigate('/cc/login');
-  }
 
   return (
     <header className={styles.header}>
@@ -27,7 +19,9 @@ export default function AppHeader() {
         <FontAwesomeIcon icon={faHandHoldingHeart} />
       </div>
       <div className={styles.title}>
-        <h1>Caregiver Connect</h1>
+        <h1>
+          <Link to="/cc">Caregiver Connect</Link>
+        </h1>
         <h2>Volunteer Management System</h2>
       </div>
       {user ? (

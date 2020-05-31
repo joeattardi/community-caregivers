@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
-import { navigate } from 'gatsby';
+import { navigate, Link } from 'gatsby';
 import { useForm } from 'react-hook-form';
 import Loader from 'react-loader-spinner';
 
@@ -103,6 +103,9 @@ export default function Login() {
             </button>
           </div>
         </form>
+        <div className={styles.signup}>
+          Not a volunteer yet? <Link to="/cc/signup">Sign up today!</Link>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useRef, useContext, useEffect, useState } from 'react';
 import { useNavigate } from '@reach/router';
 import * as EmailValidator from 'email-validator';
 import * as firebase from 'firebase/app';
-import { useStaticQuery, graphql } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { GeoFirestore } from 'geofirestore';
 import { Controller, useForm } from 'react-hook-form';
@@ -91,6 +91,7 @@ export default function Signup() {
         zip: data.zip,
         phone: data.phone,
         email: data.email,
+        joined: new Date(),
         active: false,
         coordinates: new firebase.firestore.GeoPoint(
           coordinates.lat,
@@ -335,6 +336,9 @@ export default function Signup() {
                   <span>Sign up</span>
                 )}
               </button>
+            </div>
+            <div className={styles.login}>
+              Already a volunteer? <Link to="/cc/login">Log in here.</Link>
             </div>
           </form>
         </div>

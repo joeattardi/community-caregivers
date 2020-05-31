@@ -1,5 +1,11 @@
 @import './theme';
 
 a {
-  color: $app-header-link-color;
+  color: $app-link-color;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    color: $app-link-hover-color;
+    text-decoration: underline $app-link-color;
+  }
 }
