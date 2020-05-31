@@ -28,7 +28,9 @@ export default function AppHeader() {
         <>
           <nav className={styles.nav}>
             <div className={styles.username}>
-              {user.firstName} {user.lastName}
+              <Link to="/cc/profile">
+                {user.firstName} {user.lastName}
+              </Link>
             </div>
           </nav>
           <NavigationMenu />

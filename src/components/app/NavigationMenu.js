@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 
-import { navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 
 import FirebaseContext from '../../firebase/FirebaseContext';
 
@@ -34,6 +34,12 @@ export default function NavigationMenu() {
         <div></div>
       </div>
       <div className={isOpen ? `${styles.menu} ${styles.open}` : styles.menu}>
+        <Link to="/cc" onClick={toggleMenu}>
+          Home
+        </Link>
+        <Link to="/cc/profile" onClick={toggleMenu}>
+          My Profile
+        </Link>
         <a href="#" onClick={logout}>
           Log Out
         </a>

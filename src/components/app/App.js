@@ -11,6 +11,7 @@ import UserContext from './UserContext';
 import AppLayout from './AppLayout';
 import Home from './Home';
 import Login from './Login';
+import Profile from './Profile';
 import Signup from './Signup';
 import SignupConfirm from './SignupConfirm';
 
@@ -70,6 +71,7 @@ export default function App() {
           <Login path="/login" />
           <Signup path="/signup" />
           <SignupConfirm path="/thankyou" />
+          <Profile path="/profile" />
           <Home path="/" />
         </Router>
       </AppLayout>

@@ -68,9 +68,11 @@
     color: #ffffff;
     transition: all 250ms ease-in-out;
 
+
     &:hover {
       background: #ffffff;
       color: $app-menu-active-background;
+      text-decoration: none;
     }
   }
 

@@ -48,6 +48,14 @@
 
   .username {
     font-weight: bold;
+    
+    a {
+      color: $app-header-color;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }
 
