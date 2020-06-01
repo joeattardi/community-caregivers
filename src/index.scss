@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,900&display=swap');
 
+@import './theme';
+
 body {
   font-family: 'Lato', sans-serif;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 #___gatsby, #gatsby-focus-wrapper {
@@ -14,4 +17,74 @@ body {
 
 a {
   text-decoration: none;
+
+  &.button-link {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    background: $brand-button-background;
+    color: $brand-button-color;
+    transition: background 250ms;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      background: $brand-button-hover-background;
+      color: $brand-button-color;
+      text-decoration: none;
+
+      &:disabled {
+        background: $brand-button-background;
+      }
+    }
+  }
+}
+
+button {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  cursor: pointer;
+  transition: background 250ms;
+  margin: 0.5rem;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+button.brand {
+  background: $brand-button-background;
+  color: $brand-button-color;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: $brand-button-hover-background;
+
+    &:disabled {
+      background: $brand-button-background;
+    }
+  }
+}
+
+input {
+  font-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid #999999;
+  padding: 0.5rem;
+}
+
+.form-error {
+  color: $error-color;
+  font-size: 0.9rem;
+  height: 0.9rem;
 }

@@ -32,3 +32,10 @@ collections:
           - { label: "Headline", name: "headline", widget: "string" }
           - { label: "Sub-headline", name: "subHeadline", widget: "string" }
           - { label: "Intro", name: "intro", widget: "markdown" }
+      - file: "src/pageData/registration.md"
+        label: "Volunteer Registration"
+        name: "registration"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "registration" }
+          - { label: "Pre-registration message", name: "preRegistrationMessage", widget: "markdown" }
+          - { label: "Post-registration message", name: "postRegistrationMessage", widget: "markdown" }

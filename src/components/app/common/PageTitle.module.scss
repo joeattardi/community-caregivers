@@ -1,0 +1,13 @@
+@import '../../../theme';
+
+.title {
+  background: $app-page-title-background;
+  color: #ffffff;
+  padding: 0.5rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+  h2 {
+    margin: 0;
+    font-size: 2rem;
+  }
+}

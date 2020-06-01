@@ -1,0 +1,84 @@
+@import '../../../theme';
+
+.header {
+  background: $app-header-background;
+  border-bottom: 3px solid $app-header-accent-color;
+  color: $app-header-color;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .icon {
+    color: $app-header-accent-color;
+    font-size: 3rem;
+    margin-right: 1rem;
+  }
+
+  .title {
+    h1 {
+      margin: 0;
+
+      a {
+        color: $app-header-color;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+  }
+}
+
+.nav {
+  flex-grow: 1;
+  margin: 1rem;
+
+  display: flex;
+  justify-content: flex-end;
+
+  .username {
+    font-weight: bold;
+    
+    a {
+      color: $app-header-color;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    .icon {
+      font-size: 2rem;
+    }
+
+    .title {
+      flex-grow: 1;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        display: none;
+      }
+    }
+  }
+
+  .nav {
+    display: none;
+  }
+}

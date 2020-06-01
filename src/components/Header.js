@@ -37,6 +37,9 @@ export default function Header() {
       <h1>
         <Link to="/">Community Caregivers US</Link>
       </h1>
+      <nav>
+        <Link to="/cc/login">Volunteer Login</Link>
+      </nav>
     </header>
   );
 }

@@ -1,0 +1,15 @@
+@import './theme';
+
+body {
+  background: $app-background;
+}
+
+a {
+  color: $app-link-color;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    color: $app-link-hover-color;
+    text-decoration: underline $app-link-color;
+  }
+}

@@ -1,0 +1,104 @@
+@import '../../theme';
+
+.main {
+  padding: 1rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  box-sizing: border-box;
+
+  width: 90%;
+  max-width: 60rem;
+  background: #ffffff;
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  margin: auto;
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.image {
+  width: 200px;
+  
+  &::before {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}
+
+.signup-form {
+  padding: 1rem;
+  flex-grow: 1;
+
+  form {
+    margin-top: 1rem;
+
+    .form-row {
+      display: flex;
+      flex-direction: row;
+
+      .form-field {
+        flex-basis: 50%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem;
+
+        label {
+          margin-bottom: 0.25rem;
+        }
+
+        input {
+          &.error {
+            border-color: $error-color;
+          }
+        }
+      }
+
+    }
+
+    button.submit {
+      width: 50%;
+      margin: auto;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.login {
+  margin: 1rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 450px) {
+  .main {
+    .container {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .image {
+    display: none;
+  }
+
+  .signup-form {
+    form {
+      .form-row {
+        flex-direction: column;
+      }
+
+      button.submit {
+        width: 100%;
+      }
+    }
+  }
+}
