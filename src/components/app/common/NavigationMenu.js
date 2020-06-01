@@ -1,5 +1,11 @@
 import React, { useState, useContext } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHome,
+  faSignOutAlt,
+  faUser
+} from '@fortawesome/free-solid-svg-icons';
 import { Link, navigate } from 'gatsby';
 
 import FirebaseContext from '../../../firebase/FirebaseContext';
@@ -35,12 +41,14 @@ export default function NavigationMenu() {
       </div>
       <div className={isOpen ? `${styles.menu} ${styles.open}` : styles.menu}>
         <Link to="/cc" onClick={toggleMenu}>
-          Home
+          <FontAwesomeIcon icon={faHome} size="lg" fixedWidth={true} /> Home
         </Link>
         <Link to="/cc/profile" onClick={toggleMenu}>
-          My Profile
+          <FontAwesomeIcon icon={faUser} size="lg" fixedWidth={true} /> My
+          Profile
         </Link>
         <a href="#" onClick={logout}>
+          <FontAwesomeIcon icon={faSignOutAlt} size="lg" fixedWidth={true} />{' '}
           Log Out
         </a>
       </div>

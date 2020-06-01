@@ -11,6 +11,7 @@ import UserContext from './UserContext';
 import AppLayout from './common/AppLayout';
 import Home from './Home';
 import Login from './Login';
+import NotFound from './NotFound';
 import Profile from './Profile';
 import Signup from './Signup';
 import SignupConfirm from './SignupConfirm';
@@ -72,6 +73,7 @@ export default function App() {
         <SignupConfirm path="/thankyou" />
         <Profile path="/profile" />
         <Home path="/" />
+        <NotFound default />
       </Router>
     </UserContext.Provider>
   );
