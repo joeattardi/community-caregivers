@@ -6,6 +6,7 @@ body {
   font-family: 'Lato', sans-serif;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 #___gatsby, #gatsby-focus-wrapper {
@@ -46,12 +47,14 @@ a {
 }
 
 button {
+  display: inline-block;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
   border-radius: 5px;
   border: 1px solid #000000;
   cursor: pointer;
   transition: background 250ms;
+  margin: 0.5rem;
 
   &:disabled {
     opacity: 0.5;

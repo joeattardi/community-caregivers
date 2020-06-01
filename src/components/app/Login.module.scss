@@ -17,7 +17,7 @@
   }
 }
 
-form {
+form.login-form {
   margin-top: 1rem;
 
   .form-field {
@@ -27,6 +27,12 @@ form {
 
     label {
       margin-bottom: 0.25rem;
+    }
+
+    input {
+      &.error {
+        border-color: $error-color;
+      }
     }
   }
 }

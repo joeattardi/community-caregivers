@@ -13,6 +13,7 @@ import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
 import Profile from './Profile';
+import ProfileEdit from './ProfileEdit';
 import Signup from './Signup';
 import SignupConfirm from './SignupConfirm';
 
@@ -72,6 +73,7 @@ export default function App() {
         <Signup path="/signup" />
         <SignupConfirm path="/thankyou" />
         <Profile path="/profile" />
+        <ProfileEdit path="/profile/edit" />
         <Home path="/" />
         <NotFound default />
       </Router>

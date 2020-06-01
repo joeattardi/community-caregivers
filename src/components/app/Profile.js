@@ -27,7 +27,7 @@ function Profile() {
 
         <div className={styles.actions}>
           <Link className="button-link" to="/cc/profile/edit">
-            Edit
+            Edit profile
           </Link>
           <Link className="button-link" to="/cc/changePassword">
             Change password
